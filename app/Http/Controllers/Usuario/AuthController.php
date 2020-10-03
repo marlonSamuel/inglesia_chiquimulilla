@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         $http = new Client();
 
-        $response = $http->post('http://www.union.com/oauth/token', [
+        $response = $http->post('http://www.iglesia.com/oauth/token', [
             'form_params' => [
                 'grant_type' => 'password',
                 'client_id' => config('services.passport.client_id'),
