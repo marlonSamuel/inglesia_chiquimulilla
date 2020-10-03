@@ -10,7 +10,7 @@ import LoginService from '../services/LoginService'
 import UsuarioService from '../services/UsuarioService'
 
 
-let baseUrl = 'http://www.colegio.com/' //base url desarrollo
+let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
 let token_data = $cookies.get('token_data')
 
 // Axios Configuration

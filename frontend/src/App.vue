@@ -11,9 +11,9 @@
           </v-container>
         </v-content>
 
-    <v-footer color="blue darken-3" class="white--text" v-if="isLogin" app>
+    <v-footer color="amber" class="white--text" v-if="isLogin" app>
       <v-layout align-center justify-center>
-        <span class="px-3">proyecto base vuetify &copy; {{ new Date().getFullYear() }}</span>
+        <span class="px-3">parroquia santa cruz &copy; {{ new Date().getFullYear() }}</span>
       </v-layout>
     </v-footer>
       

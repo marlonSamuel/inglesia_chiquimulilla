@@ -5,9 +5,9 @@
       :clipped="$vuetify.breakpoint.lgAndUp"
       fixed
       app
-      dark
+      class="grey lighten-4"
     >
-      <v-list dense>
+      <v-list dense class="grey lighten-4">
         <template>
           <v-list-tile :to="'/'">
             <v-list-tile-action>
@@ -56,7 +56,7 @@
     </v-navigation-drawer>
     <v-toolbar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      color="blue darken-3"
+      color="amber"
       dark
       app
       fixed
@@ -72,11 +72,11 @@
         >
           <img :src="logo" alt="avatar">
         </v-avatar>
-        SISPA
+        SICOBCM
         </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <h2 class="hidden-sm-and-down">PROYECTO BASE VUETIFY</h2>
+      <h2 class="hidden-sm-and-down">PARROQUIA SANTA CRUZ CHIQUIMULILLA</h2>
       <v-spacer></v-spacer>
       
       {{userName}}

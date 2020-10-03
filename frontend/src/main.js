@@ -13,6 +13,12 @@ Vue.use(Vuetify, {
         es
     },
       current: 'es'
+  },
+  breakpoint: {
+    thresholds: {
+      xs: 360
+    },
+    scrollbarWidth: 10
   }
 })
 // App

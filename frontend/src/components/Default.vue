@@ -1,7 +1,7 @@
 <template>
   <v-layout v-loading="loading" grid-list-md>
       <v-layout wrap>
-        ESCRITORIO PROYECTO BASE
+        ESCRITORIO PARROQUIA SANTA CRUZ CHIQUIMULILLA
         <el-divider></el-divider>
       </v-layout>
   </v-layout>
