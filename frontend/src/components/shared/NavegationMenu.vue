@@ -142,12 +142,12 @@ export default {
 
       items: [{
             icon: 'settings',
-            text: 'Administracion',
-            name: 'Administracion',
+            text: 'Catalogos',
+            name: 'Catalogos',
             model: true,
-            path: 'example',
+            path: '',
             children: [
-                { name: 'Ejemplo', icon: 'add', text: 'Ejemplo', path: '/example_index' }
+                { name: 'Parroco', icon: 'add', text: 'Parrocos', path: '/parroco' }
             ]
         },
 

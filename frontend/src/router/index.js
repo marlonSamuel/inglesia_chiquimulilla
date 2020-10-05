@@ -8,6 +8,8 @@ import ExampleIndex from '@/components/example/Index'
 import Login from '@/components/login/Index'
 import CambiarContrasenia from '@/components/accesos/CambiarContrasenia'
 
+import Parroco from '@/components/catalogos/Parroco'
+
 Vue.use(Router)
 
 //validar authenticacion
@@ -25,6 +27,8 @@ const routes = [
     { path: '/example_index', name: 'ExampleIndex', component: ExampleIndex, beforeEnter: multiguard([isLoggedIn]) },
     { path: '/login', name: 'Login', component: Login, beforeEnter: multiguard([isLoggedOut]) },
     { path: '/change_password', name: 'CambiarContrasenia', component: CambiarContrasenia, beforeEnter: multiguard([isLoggedIn]) },
+
+    { path: '/parroco', name: 'Parroco', component: Parroco, beforeEnter: multiguard([isLoggedIn])}
 ]
 
 

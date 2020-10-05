@@ -8,6 +8,8 @@ import { isNullOrUndefined } from 'util';
 import exampleService from '../services/ExampleService'
 import LoginService from '../services/LoginService'
 import UsuarioService from '../services/UsuarioService'
+import ParrocoService from '../services/ParrocoService'
+import MunicipioService from '../services/MunicipioService'
 
 
 let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
@@ -64,4 +66,6 @@ export default {
     exampleService: new exampleService(Axios),
     loginService: new LoginService(Axios, baseUrl),
     usuarioService: new UsuarioService(Axios, baseUrl),
+    parrocoService: new ParrocoService(Axios,baseUrl),
+    municipioService: new MunicipioService(Axios,baseUrl)
 }

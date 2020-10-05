@@ -22,3 +22,12 @@ Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenContro
 
 Route::name('me')->get('auth/me', 'Usuario\AuthController@user');
 Route::name('cambiar_contraseña')->post('usuarios_change_password', 'Usuario\UsuarioController@changePassword');
+
+#===================PARROCOS=========================================$
+Route::resource('parrocos', 'Parroco\ParrocoController', ['except' => ['create', 'edit']]);
+
+#===================DEPARTAMENTOS=========================================$
+Route::resource('departamentos', 'Departamento\DepartamentoController', ['except' => ['create', 'edit']]);
+
+#===================MUNICIPIOS=========================================$
+Route::resource('municipios', 'Municipio\MunicipioController', ['except' => ['create', 'edit']]);

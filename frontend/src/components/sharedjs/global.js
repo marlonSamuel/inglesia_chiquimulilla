@@ -1,5 +1,24 @@
 import moment from 'moment'
+import router from '../../router'
+
 export default {
+
+    captureError(r) {
+        if (r.response) {
+            if (typeof r.response.data.error === 'object') {
+                for (let value of Object.values(r.response.data.error)) {
+                    toastr.error(value, 'Mensaje')
+                }
+            } else {
+                toastr.error(r.response.data.error, 'error')
+                if (r.response.status === 403) {
+                    router.push("/")
+                }
+            }
+            return true
+        }
+        return false
+    },
 
     //funcion para convertir decimales a horas, si no se envia los paramtros opciones devuelve hora completa
     decimalToHour(a, only_hour = false, only_minutes = false) {
