@@ -10,6 +10,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 frontend/bundle/
-/public/bundle
-/resource/views/home.blade
 frontend/node_modules
