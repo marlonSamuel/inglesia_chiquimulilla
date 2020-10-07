@@ -10,6 +10,8 @@ import LoginService from '../services/LoginService'
 import UsuarioService from '../services/UsuarioService'
 import ParrocoService from '../services/ParrocoService'
 import MunicipioService from '../services/MunicipioService'
+import ParroquiaService from '../services/ParroquiaService'
+import LibroService from '../services/LibroService'
 
 
 //let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
@@ -68,5 +70,7 @@ export default {
     loginService: new LoginService(Axios, baseUrl),
     usuarioService: new UsuarioService(Axios, baseUrl),
     parrocoService: new ParrocoService(Axios,baseUrl),
-    municipioService: new MunicipioService(Axios,baseUrl)
+    municipioService: new MunicipioService(Axios,baseUrl),
+    parroquiaService: new ParroquiaService(Axios,baseUrl),
+    libroService: new LibroService(Axios,baseUrl)
 }

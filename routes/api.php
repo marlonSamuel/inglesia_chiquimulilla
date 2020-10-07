@@ -31,3 +31,9 @@ Route::resource('departamentos', 'Departamento\DepartamentoController', ['except
 
 #===================MUNICIPIOS=========================================$
 Route::resource('municipios', 'Municipio\MunicipioController', ['except' => ['create', 'edit']]);
+
+#===================PARROQUIAS=========================================$
+Route::resource('parroquias', 'Parroquia\ParroquiaController', ['except' => ['create', 'edit']]);
+
+#===================LIBROS=========================================$
+Route::resource('libros', 'Libro\LibroController', ['except' => ['create', 'edit']]);

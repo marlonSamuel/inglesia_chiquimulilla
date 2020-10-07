@@ -164,7 +164,9 @@ export default {
         primer_nombre: '',
         segundo_nombre: '',
         primer_apellido: '',
-        segundo_apellido: ''
+        segundo_apellido: '',
+        direccion: '',
+        municipio_id: null
       },
     };
   },
@@ -293,6 +295,8 @@ export default {
         self.form.primer_apellido = data.primer_apellido
         self.form.segundo_apellido = data.segundo_apellido
         self.form.numero = data.numero
+        self.form.direccion = data.direccion
+        self.form.municipio_id = data.municipio_id
     },
 
     //funcion, validar si se guarda o actualiza

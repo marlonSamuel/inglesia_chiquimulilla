@@ -19,6 +19,7 @@ class CreateLibrosTable extends Migration
             $table->integer('partidas');
             $table->integer('folio_actual');
             $table->integer('partida_actual');
+            $table->boolean('terminado')->default(false);
             $table->timestamps();
         });
     }

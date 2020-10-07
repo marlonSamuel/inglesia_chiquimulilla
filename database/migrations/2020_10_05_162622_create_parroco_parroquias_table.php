@@ -22,7 +22,7 @@ class CreateParrocoParroquiasTable extends Migration
             $table->timestamps();
 
             $table->foreign('parroco_id')->references('id')->on('parrocos');
-            $table->foreign('parroquia_id')->references('id')->on('parroquias');
+            $table->foreign('parroquia_id')->references('id')->on('parroquias')->onDelete('cascade');
         });
     }
 

@@ -9,6 +9,8 @@ import Login from '@/components/login/Index'
 import CambiarContrasenia from '@/components/accesos/CambiarContrasenia'
 
 import Parroco from '@/components/catalogos/Parroco'
+import Parroquia from '@/components/catalogos/Parroquia'
+import Libro from '@/components/catalogos/Libro'
 
 Vue.use(Router)
 
@@ -28,7 +30,9 @@ const routes = [
     { path: '/login', name: 'Login', component: Login, beforeEnter: multiguard([isLoggedOut]) },
     { path: '/change_password', name: 'CambiarContrasenia', component: CambiarContrasenia, beforeEnter: multiguard([isLoggedIn]) },
 
-    { path: '/parroco', name: 'Parroco', component: Parroco, beforeEnter: multiguard([isLoggedIn])}
+    { path: '/parroco', name: 'Parroco', component: Parroco, beforeEnter: multiguard([isLoggedIn])},
+    { path: '/parroquia', name: 'Parroquia', component: Parroquia, beforeEnter: multiguard([isLoggedIn])},
+    { path: '/libro', name: 'Libro', component: Libro, beforeEnter: multiguard([isLoggedIn])}
 ]
 
 

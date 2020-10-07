@@ -59,7 +59,8 @@ class ParrocoController extends ApiController
         $reglas = [
             'numero' => 'required',
             'primer_nombre' => 'required', 
-            'primer_apellido' => 'required'
+            'primer_apellido' => 'required',
+            'municipio_id' => 'required'
         ];
 
         $this->validate($request, $reglas);
@@ -69,6 +70,8 @@ class ParrocoController extends ApiController
         $parroco->segundo_nombre = $request->segundo_nombre;
         $parroco->primer_apellido = $request->primer_apellido;
         $parroco->segundo_apellido = $request->segundo_apellido;
+        $parroco->direccion = $request->direccion;
+        $parroco->municipio_id = $request->municipio_id;
 
         if (!$parroco->isDirty()) {
             return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);

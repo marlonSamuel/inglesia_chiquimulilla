@@ -147,7 +147,9 @@ export default {
             model: true,
             path: '',
             children: [
-                { name: 'Parroco', icon: 'add', text: 'Parrocos', path: '/parroco' }
+                { name: 'Parroco', icon: 'add', text: 'Parrocos', path: '/parroco' },
+                { name: 'Parroquia', icon: 'add', text: 'Parroquias', path: '/parroquia' },
+                { name: 'Libros', icon: 'add', text: 'Libros', path: '/libro' }
             ]
         },
 
