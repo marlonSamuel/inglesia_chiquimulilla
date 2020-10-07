@@ -72,7 +72,7 @@
                         </v-autocomplete>
                     </v-flex>
 
-                    <v-flex xs12 sm6 md6 v-if="form.id !== null">
+                    <v-flex xs12 sm6 md6 v-if="form.id === null">
                     <v-switch
                       v-model="form.nuevo"
                       :label="`nuevo: ${form.nuevo ?'Si':'No'}`"
