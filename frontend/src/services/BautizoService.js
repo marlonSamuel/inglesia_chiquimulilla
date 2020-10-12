@@ -1,20 +1,15 @@
-class ParrocoService {
+class BautizoService{
     axios
     baseUrl
 
     constructor(axios,baseUrl){
         this.axios = axios
-        this.baseUrl = `${baseUrl}parrocos`
+        this.baseUrl = `${baseUrl}bautizos`
     }
 
     getAll(){
         let self = this
         return self.axios.get(`${self.baseUrl}`)
-    }
-
-    getParrocoParroquias(){
-        let self = this
-        return self.axios.get(`${self.baseUrl}_parroquias`)
     }
 
     get(id){
@@ -34,8 +29,13 @@ class ParrocoService {
 
     destroy(data){
         let self = this
-        return self.axios.delete(`${self.baseUrl}/${data.id}`,data)
+        return self.axios.delete(`${self.baseUrl}/${data.id}`)
+    }
+
+    print(id) {
+        let self = this
+        return self.axios.get(`${self.baseUrl}_pdf/${id}`, { responseType: 'blob' });
     }
 }
 
-export default ParrocoService
+export default BautizoService

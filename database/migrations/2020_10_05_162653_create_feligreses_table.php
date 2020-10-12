@@ -15,12 +15,13 @@ class CreateFeligresesTable extends Migration
     {
         Schema::create('feligreses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('numero',15);
+            $table->string('telefono',15)->nullable();
             $table->string('primer_nombre',25);
             $table->string('segundo_nombre',25)->nullable();
             $table->string('primer_apellido',25);
             $table->string('segundo_apellido',25)->nullable();
             $table->string('direccion',255)->nullable();
+            $table->date('fecha_nac')->nullable();
             $table->unsignedBigInteger('municipio_id');
             $table->unsignedBigInteger('parroquia_id');
             $table->timestamps();

@@ -25,6 +25,7 @@ Route::name('cambiar_contraseña')->post('usuarios_change_password', 'Usuario\Us
 
 #===================PARROCOS=========================================$
 Route::resource('parrocos', 'Parroco\ParrocoController', ['except' => ['create', 'edit']]);
+Route::resource('parrocos_parroquias', 'Parroco\ParrocoParroquiaController', ['except' => ['create', 'edit']]);
 
 #===================DEPARTAMENTOS=========================================$
 Route::resource('departamentos', 'Departamento\DepartamentoController', ['except' => ['create', 'edit']]);
@@ -37,3 +38,10 @@ Route::resource('parroquias', 'Parroquia\ParroquiaController', ['except' => ['cr
 
 #===================LIBROS=========================================$
 Route::resource('libros', 'Libro\LibroController', ['except' => ['create', 'edit']]);
+
+#===================FELIGRESES=========================================$
+Route::resource('feligreses', 'Feligrese\FeligreseController', ['except' => ['create', 'edit']]);
+
+#===================BAUTIZOS=========================================$
+Route::resource('bautizos', 'Bautizo\BautizoController', ['except' => ['create', 'edit']]);
+Route::name('bautizos_pdf')->get('bautizos_pdf/{id}', 'Bautizo\BautizoController@pdf');

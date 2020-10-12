@@ -11,7 +11,8 @@ class ParrocoParroquia extends Model
     protected $fillable = [
     	'parroco_id',
     	'parroquia_id',
-    	'actual'
+    	'actual',
+        'principal'
     ];
 
     public function parroco(){

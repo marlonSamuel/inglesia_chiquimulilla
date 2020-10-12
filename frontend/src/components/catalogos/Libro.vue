@@ -28,7 +28,7 @@
             <v-card-text>
               <v-container grid-list-md>
                 <v-layout wrap>
-                  <v-flex xs6 sm6 md6>
+                  <v-flex xs6 sm4 md4>
                     <v-text-field v-model="form.no_folios" 
                         label="Numero de folios"
                         v-validate="'required'"
@@ -38,7 +38,7 @@
                     </v-text-field>
                   </v-flex>
 
-                  <v-flex xs6 sm6 md6>
+                  <v-flex xs6 sm4 md4>
                     <v-text-field v-model="form.partidas" 
                         label="Partidas por folio"
                         v-validate="'required'"
@@ -47,6 +47,14 @@
                         :error-messages="errors.collect('partidas')">
                     </v-text-field>
                   </v-flex>
+                  <v-flex xs12 sm4 md4>
+                        <v-autocomplete
+                            v-model="form.tipo_libro"
+                            label="Seleccione tipo libro"
+                            :items="tipo_libros"
+                        >
+                        </v-autocomplete>
+                    </v-flex>
                 </v-layout>
               </v-container>
             </v-card-text>
@@ -66,7 +74,8 @@
         class="elevation-1"
       >
         <template v-slot:items="props">
-          <td class="text-xs-left">{{props.index}}</td>
+          <td class="text-xs-left">{{props.item.no_libro}}</td>
+          <td class="text-xs-left">{{ props.item.tipo_libro == 'M' ?'Matrimonios': props.item.tipo_libro == 'B' ? 'Bautizos':"Confirmaciones" }}</td>
           <td class="text-xs-left">{{ props.item.no_folios }}</td>
           <td class="text-xs-left">{{ props.item.partidas }}</td>
           <td class="text-xs-left">{{ props.item.folio_actual }}</td>
@@ -108,8 +117,14 @@ export default {
       loading: false,
       items: [],
       municipios: [],
+      tipo_libros: [
+         {text: "Bautizos",value:'B'},
+         {text: "Confirmaciones", value: "C"},
+         {text: "Matrimonios", value: "M"}
+      ],
       headers: [
           { text: '#', value: '#' },
+          { text: 'Libro', value: 'tipo_libro' },
         { text: 'Numero folios', value: 'no_folios' },
         { text: 'Partidas', value: 'no_partidas' },
         { text: 'Folio actual', value: 'folio_actual' },
@@ -122,6 +137,7 @@ export default {
         no_folios: null,
         no_partidas: 3,
         folio_actual: 0,
+        tipo_libro: '',
         partida_actual: 0
       },
     };

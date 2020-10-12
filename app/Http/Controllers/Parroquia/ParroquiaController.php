@@ -99,6 +99,8 @@ class ParroquiaController extends ApiController
         $parroquia->nombre = $request->nombre;
         $parroquia->direccion = $request->direccion;
         $parroquia->municipio_id = $request->municipio_id;
+        $parroquia->cp = $request->cp;
+        $parroquia->telefono = $request->telefono;
 
         $parroco = $parroquia->parroco;
 

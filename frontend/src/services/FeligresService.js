@@ -1,20 +1,15 @@
-class ParrocoService {
+class FeligresService{
     axios
     baseUrl
 
     constructor(axios,baseUrl){
         this.axios = axios
-        this.baseUrl = `${baseUrl}parrocos`
+        this.baseUrl = `${baseUrl}feligreses`
     }
 
     getAll(){
         let self = this
         return self.axios.get(`${self.baseUrl}`)
-    }
-
-    getParrocoParroquias(){
-        let self = this
-        return self.axios.get(`${self.baseUrl}_parroquias`)
     }
 
     get(id){
@@ -38,4 +33,4 @@ class ParrocoService {
     }
 }
 
-export default ParrocoService
+export default FeligresService

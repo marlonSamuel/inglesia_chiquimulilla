@@ -15,10 +15,12 @@ class CreateLibrosTable extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('no_libro');
             $table->integer('no_folios');
             $table->integer('partidas');
             $table->integer('folio_actual');
             $table->integer('partida_actual');
+            $table->char('tipo_libro',1);
             $table->boolean('terminado')->default(false);
             $table->timestamps();
         });

@@ -11,6 +11,9 @@ import CambiarContrasenia from '@/components/accesos/CambiarContrasenia'
 import Parroco from '@/components/catalogos/Parroco'
 import Parroquia from '@/components/catalogos/Parroquia'
 import Libro from '@/components/catalogos/Libro'
+import Feligres from '@/components/catalogos/Feligres'
+
+import Bautizo from '@/components/administracion/Bautizo'
 
 Vue.use(Router)
 
@@ -32,7 +35,9 @@ const routes = [
 
     { path: '/parroco', name: 'Parroco', component: Parroco, beforeEnter: multiguard([isLoggedIn])},
     { path: '/parroquia', name: 'Parroquia', component: Parroquia, beforeEnter: multiguard([isLoggedIn])},
-    { path: '/libro', name: 'Libro', component: Libro, beforeEnter: multiguard([isLoggedIn])}
+    { path: '/libro', name: 'Libro', component: Libro, beforeEnter: multiguard([isLoggedIn])},
+    { path: '/feligres', name: 'Feligres', component: Feligres, beforeEnter: multiguard([isLoggedIn])},
+    { path: '/bautizo', name: 'Bautizo', component: Bautizo, beforeEnter: multiguard([isLoggedIn])}
 ]
 
 

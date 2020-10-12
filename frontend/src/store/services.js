@@ -12,10 +12,12 @@ import ParrocoService from '../services/ParrocoService'
 import MunicipioService from '../services/MunicipioService'
 import ParroquiaService from '../services/ParroquiaService'
 import LibroService from '../services/LibroService'
+import FeligresService from '../services/FeligresService'
+import BautizoService from '../services/BautizoService'
 
 
-//let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
-let baseUrl = 'http://207.154.253.69/iglesia/' //url production
+let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
+//let baseUrl = 'http://207.154.253.69/iglesia/' //url production
 let token_data = $cookies.get('token_data')
 
 // Axios Configuration
@@ -72,5 +74,7 @@ export default {
     parrocoService: new ParrocoService(Axios,baseUrl),
     municipioService: new MunicipioService(Axios,baseUrl),
     parroquiaService: new ParroquiaService(Axios,baseUrl),
-    libroService: new LibroService(Axios,baseUrl)
+    libroService: new LibroService(Axios,baseUrl),
+    feligresService: new FeligresService(Axios,baseUrl),
+    bautizoService: new BautizoService(Axios,baseUrl)
 }

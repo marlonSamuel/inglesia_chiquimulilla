@@ -149,7 +149,18 @@ export default {
             children: [
                 { name: 'Parroco', icon: 'add', text: 'Parrocos', path: '/parroco' },
                 { name: 'Parroquia', icon: 'add', text: 'Parroquias', path: '/parroquia' },
-                { name: 'Libros', icon: 'add', text: 'Libros', path: '/libro' }
+                { name: 'Libros', icon: 'add', text: 'Libros', path: '/libro' },
+                { name: 'Feligres', icon: 'add', text: 'Feligreses', path: '/feligres' }
+            ]
+        },
+        {
+            icon: 'settings',
+            text: 'Administracion',
+            name: 'Administracion',
+            model: true,
+            path: '',
+            children: [
+                { name: 'Bautizo', icon: 'add', text: 'Bautizos', path: '/bautizo' }
             ]
         },
 

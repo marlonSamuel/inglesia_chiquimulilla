@@ -17,6 +17,8 @@ class CreateParroquiasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre',150);
             $table->string('direccion',250);
+            $table->string('cp',10)->nullable();
+            $table->string('telefono',15)->nullable();
             $table->unsignedBigInteger('municipio_id');
             $table->timestamps();
 

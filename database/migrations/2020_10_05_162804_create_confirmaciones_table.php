@@ -19,6 +19,7 @@ class CreateConfirmacionesTable extends Migration
             $table->integer('partida');
             $table->date('fecha');
             $table->string('monsenior');
+            $table->unsignedBigInteger('feligres_id');
             $table->unsignedBigInteger('libro_id');
             $table->unsignedBigInteger('padre_id');
             $table->unsignedBigInteger('madre_id');
@@ -28,6 +29,7 @@ class CreateConfirmacionesTable extends Migration
             $table->timestamps();
 
             $table->foreign('libro_id')->references('id')->on('libros');
+            $table->foreign('feligres_id')->references('id')->on('feligreses');
             $table->foreign('padre_id')->references('id')->on('feligreses');
             $table->foreign('madre_id')->references('id')->on('feligreses');
             $table->foreign('padrino1_id')->references('id')->on('feligreses');

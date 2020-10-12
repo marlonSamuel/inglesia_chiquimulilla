@@ -11,7 +11,9 @@ class Parroquia extends Model
     protected $fillable = [
     	'nombre',
     	'direccion',
-    	'municipio_id'
+    	'municipio_id',
+        'telefono',
+        'cp'
     ];
 
     public function municipio(){

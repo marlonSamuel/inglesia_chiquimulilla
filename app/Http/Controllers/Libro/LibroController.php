@@ -10,7 +10,7 @@ use App\Http\Controllers\ApiController;
 class LibroController extends ApiController
 {
     public function __construct(){
-        parent::__construct();
+        #parent::__construct();
     }
 
     public function index()
@@ -29,12 +29,15 @@ class LibroController extends ApiController
     {
         $reglas = [
             'no_folios' => 'required',
-            'partidas' => 'required'
+            'partidas' => 'required',
+            'tipo_libro'=>'required'
         ];
 
         $this->validate($request, $reglas);
 
         $data = $request->all();
+        $c_libros = Libro::where('tipo_libro',$request->tipo_libro)->count();
+        $data['no_libro'] = $c_libros+1;
         $libro = Libro::create($data);
 
         return $this->showOne($libro, 201);

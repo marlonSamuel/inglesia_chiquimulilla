@@ -2,7 +2,7 @@
   <v-layout align-start v-loading="loading">
     <v-flex>
       <v-toolbar flat color="white">
-        <v-toolbar-title>PARROQUIAS </v-toolbar-title>
+        <v-toolbar-title>FELIGRESES </v-toolbar-title>
         <v-divider
           class="mx-2"
           inset
@@ -29,94 +29,7 @@
               <v-container grid-list-md>
                 <v-layout wrap>
                   <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.nombre" 
-                        label="Nombre"
-                        v-validate="'required'"
-                        type="text"
-                        data-vv-name="nombre"
-                        :error-messages="errors.collect('nombre')">
-                    </v-text-field>
-                  </v-flex>
-
-                  <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.cp" 
-                        label="C.P."
-                        v-validate="'required'"
-                        type="text"
-                        data-vv-name="cp"
-                        :error-messages="errors.collect('cp')">
-                    </v-text-field>
-                  </v-flex>
-
-                  <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.telefono" 
-                        label="telefono"
-                        v-validate="'required'"
-                        type="number"
-                        data-vv-name="telefono"
-                        :error-messages="errors.collect('telefono')">
-                    </v-text-field>
-                  </v-flex>
-
-                    <v-flex xs12 sm6 md6>
-                        <v-autocomplete
-                            v-model="form.municipio_id"
-                            label="Departamento / Municipio"
-                            placeholder="Departamento / Municipio"
-                            :items="municipios"
-                            item-text="nombre"
-                            item-value="id"
-                            data-vv-name="municipio"
-                            v-validate="'required'"
-                            :error-messages="errors.collect('municipio')"
-                            >
-                        </v-autocomplete>
-                    </v-flex>
-
-                    <v-flex xs12 sm12 md12>
-                        <v-text-field v-model="form.direccion" 
-                            label="Direccion"
-                            type="text">
-                        </v-text-field>
-                    </v-flex>
-
-                    <v-flex xs12 sm6 md6 v-if="!form.nuevo">
-                        <v-autocomplete
-                            slot="parroco_selection"
-                            v-model="form.parroco_id"
-                            label="Seleccione parroco"
-                            :items="parrocos"
-                            item-value="id"
-                            item-text="fullname"
-                        >
-                        </v-autocomplete>
-                    </v-flex>
-
-                    <v-flex xs12 sm6 md6 v-if="form.id === null">
-                    <v-switch
-                      v-model="form.nuevo"
-                      :label="`nuevo: ${form.nuevo ?'Si':'No'}`"
-                    ></v-switch>
-                  </v-flex>
-                  
-                </v-layout>
-
-                <v-layout wrap v-if="form.nuevo">
-                    <el-divider></el-divider>
-                    DATOS DEL PARROCO
-                    <el-divider></el-divider>
-                  <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.parroco.numero" 
-                        label="Numero"
-                        v-validate="'required'"
-                        type="text"
-                        data-vv-name="numero"
-                        :error-messages="errors.collect('numero')">
-                    </v-text-field>
-                  </v-flex>
-
-                  <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.parroco.primer_nombre" 
+                    <v-text-field v-model="form.primer_nombre" 
                         label="Primer nombre"
                         v-validate="'required'"
                         type="text"
@@ -127,14 +40,14 @@
                   </v-flex>
 
                   <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.parroco.segundo_nombre" 
+                    <v-text-field v-model="form.segundo_nombre" 
                         label="Segundo nombre"
                         type="text">
                     </v-text-field>
                   </v-flex>
 
                   <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.parroco.primer_apellido" 
+                    <v-text-field v-model="form.primer_apellido" 
                         label="Primer apellido"
                         v-validate="'required'"
                         type="text"
@@ -145,36 +58,61 @@
                   </v-flex>
 
                   <v-flex xs6 sm6 md6>
-                    <v-text-field v-model="form.parroco.segundo_apellido" 
+                    <v-text-field v-model="form.segundo_apellido" 
                         label="Segundo apellido"
                         type="text">
                     </v-text-field>
                   </v-flex>
 
+                  <v-flex xs6 sm6 md6>
+                    <v-text-field type="date"
+                        label="Fecha nacimiento"
+                        v-model="form.fecha_nac"
+                        data-vv-name="fecha_nac"
+                        data-vv-as="fecha de nacimiento"
+                        :error-messages="errors.collect('fecha_nac')"></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs6 sm6 md6>
+                    <v-text-field v-model="form.telefono" 
+                        label="Telefono"
+                        type="number">
+                    </v-text-field>
+                  </v-flex>
+                  
+
+                   <v-flex xs12 sm6 md6>
+                        <v-autocomplete
+                            v-model="form.parroquia_id"
+                            label="Parroquia"
+                            placeholder="Parroquia"
+                            :items="parroquias"
+                            item-text="nombre"
+                            item-value="id"
+                            >
+                        </v-autocomplete>
+                    </v-flex>
+
                     <v-flex xs12 sm6 md6>
                         <v-autocomplete
-                            v-model="form.parroco.municipio_id"
+                            v-model="form.municipio_id"
                             label="Departamento / Municipio"
                             placeholder="Departamento / Municipio"
                             :items="municipios"
                             item-text="nombre"
                             item-value="id"
-                            data-vv-name="municipio_parroco"
-                            v-validate="'required'"
-                            :error-messages="errors.collect('municipio_parroco')"
                             >
                         </v-autocomplete>
                     </v-flex>
 
                     <v-flex xs12 sm12 md12>
-                    <v-text-field v-model="form.parroco.direccion" 
+                    <v-text-field v-model="form.direccion" 
                         label="Direccion"
                         type="text">
                     </v-text-field>
 
                   </v-flex>
                 </v-layout>
-
               </v-container>
             </v-card-text>
   
@@ -193,9 +131,10 @@
         class="elevation-1"
       >
         <template v-slot:items="props">
-          <td class="text-xs-left">{{ props.item.nombre }}</td>
-          <td class="text-xs-left">{{ props.item.parroco.parroco.primer_nombre }} {{ props.item.parroco.parroco.segundo_nombre }}
-                                   {{ props.item.parroco.parroco.primer_apellido }} {{ props.item.parroco.parroco.segundo_apellido }}</td>
+          
+          <td class="text-xs-left">{{ props.item.primer_nombre }} {{ props.item.segundo_nombre }}
+                                   {{ props.item.primer_apellido }} {{ props.item.segundo_apellido }}</td>
+          <td class="text-xs-left">{{ props.item.parroquia.nombre }}</td>
           <td class="text-xs-left">{{ props.item.direccion }} {{ props.item.municipio.nombre }} {{ props.item.municipio.departamento.nombre }}</td>
           <td class="text-xs-left">
               <v-tooltip top>
@@ -222,7 +161,7 @@
 
 <script>
 export default {
-  name: "parroquia",
+  name: "feligres",
   props: {
       source: String
     },
@@ -233,31 +172,24 @@ export default {
       loading: false,
       items: [],
       municipios: [],
-      parrocos: [],
+      parroquias: [],
       headers: [
         { text: 'nombre', value: 'nombre' },
-        { text: 'parroco actual', value: 'parroco' },
+        { text: 'parroquia', value: 'parroquia' },
         { text: 'direccion', value: 'direccion' },
         { text: 'Acciones', value: '', sortable: false }
       ],
       form: {
         id: null,
-        nombre: null,
-        municipio_id: null,
+        primer_nombre: '',
+        segundo_nombre: '',
+        primer_apellido: '',
+        segundo_apellido: '',
         direccion: '',
-        nuevo: false,
+        municipio_id: null,
+        parroquia_id: null,
         telefono: '',
-        cp: '',
-        parroco: {
-            numero: '',
-            primer_nombre: '',
-            segundo_nombre: '',
-            primer_apellido: '',
-            segundo_apellido: '',
-            municipio_id: null,
-            direccion: ''
-        }
-        
+        fecha_nac: null
       },
     };
   },
@@ -266,14 +198,14 @@ export default {
     let self = this
     self.getAll()
     self.getMunicipios()
-    self.getParrocos()
+    self.getParroquias()
   },
 
   methods: {
      getAll() {
       let self = this
       self.loading = true
-      self.$store.state.services.parroquiaService
+      self.$store.state.services.feligresService
         .getAll()
         .then(r => {
           self.loading = false
@@ -302,24 +234,28 @@ export default {
             }).catch(e=>{})
     },
 
-    //obtener parrocos
-    getParrocos(){
-        let self = this
+    //obtener municipios
+    getParroquias(){
+        let self= this
         self.loading = true
-        self.$store.state.services.parrocoService
-        .getAll()
-        .then(r=>{
-            self.loading = false
-            r.data.map(obj=> ({ ...obj.fullname = obj.primer_nombre+' '+obj.primer_apellido}))
-            self.parrocos = r.data
-        }).catch(e=>{})
+        self.$store.state.services.parroquiaService
+            .getAll()
+            .then(r => {
+                self.loading = false
+                if(r.response){
+                    this.$toastr.error(r.response.data.error, 'error')
+                    return
+                }
+                self.parroquias = r.data
+            }).catch(e=>{})
     },
+
     //funcion para guardar registro
     create(){
       let self = this
       self.loading = true
       let data = self.form
-      self.$store.state.services.parroquiaService
+      self.$store.state.services.feligresService
         .create(data)
         .then(r => {
           self.loading = false
@@ -338,7 +274,7 @@ export default {
       self.loading = true
       let data = self.form
        
-      self.$store.state.services.parroquiaService
+      self.$store.state.services.feligresService
         .update(data)
         .then(r => {
           self.loading = false
@@ -355,9 +291,9 @@ export default {
     //funcion para eliminar registro
     destroy(data){
       let self = this
-      self.$confirm('Seguro que desea eliminar parrco '+ data.nombre+'?').then(res => {
+      self.$confirm('Seguro que desea eliminar feligres?').then(res => {
         self.loading = true
-            self.$store.state.services.parroquiaService
+            self.$store.state.services.feligresService
             .destroy(data)
             .then(r => {
                 self.loading = false
@@ -379,7 +315,7 @@ export default {
           if(typeof self.form[key] === "string") 
             self.form[key] = ''
           else if (typeof self.form[key] === "boolean") 
-            self.form[key] = false
+            self.form[key] = true
           else if (typeof self.form[key] === "number") 
             self.form[key] = null
         });
@@ -395,11 +331,15 @@ export default {
     mapData(data){
         let self = this
         self.form.id = data.id
-        self.form.nombre = data.nombre
+        self.form.primer_nombre = data.primer_nombre
+        self.form.segundo_nombre = data.segundo_nombre
+        self.form.primer_apellido = data.primer_apellido
+        self.form.segundo_apellido = data.segundo_apellido
         self.form.direccion = data.direccion
         self.form.municipio_id = data.municipio_id
+        self.form.parroquia_id = data.parroquia_id
+        self.form.fecha_nac = data.fecha_nac
         self.form.telefono = data.telefono
-        self.form.cp = data.cp
     },
 
     //funcion, validar si se guarda o actualiza
