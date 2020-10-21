@@ -16,9 +16,9 @@ const state = {
     is_login: false,
     token_expired: null,
     client_id: 2,
-    base_url: 'http://www.iglesia.com/',
-    //base_url: 'http://207.154.253.69/iglesia/',
-    client_secret: 'J6lVfPlGbeD0Uyocu2pIgJeC9OGnlOpmyOI0mV87'
+    //base_url: 'http://www.iglesia.com/',
+    base_url: 'http://207.154.253.69/iglesia/',
+    client_secret: 'wFBQnQiXZW01QEY8teuPDYtMW2aVOOOnBM6FTmVZ'
 }
 
 const mutations = {

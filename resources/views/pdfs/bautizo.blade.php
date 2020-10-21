@@ -1,7 +1,7 @@
 <html>
 <body>
 	<header>
-        <img class="logo" src="{{asset('img/logo.jpg')}}" width="100px" height="100px" />
+        <img class="logo" src="{{asset('img/logo_report.jpeg')}}" width="100px" height="100px" />
         <b>PARROQUIA SANTA CRUZ</b> <br />
         <b>Casa Parroquial</b> <br />
         <b>Chiquimulilla, Santa Rosa</b> <br />
@@ -40,7 +40,7 @@
         Y 
         {{$bautizo->padrino2->primer_nombre}} {{$bautizo->padrino2->segundo_nombre}} {{$bautizo->padrino2->primer_apellido}} {{$bautizo->padrino2->segundo_apellido}}</b> <br />
 
-        Al margen se lee ________________________________________________________<br />
+        Al margen se lee  <b> {{$bautizo->bautizado->primer_nombre}} {{$bautizo->bautizado->segundo_nombre}} {{$bautizo->bautizado->primer_apellido}} {{$bautizo->bautizado->segundo_apellido}}</b><br />
 
             En consecuencia y para los usos que al interesado convengan, extiende, firma y sella la presente en el despacho de la Parroquia Santa Cruz Chiquimulilla, Depto. De Santa Rosa.
 
