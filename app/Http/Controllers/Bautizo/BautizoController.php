@@ -14,7 +14,7 @@ use App\Http\Controllers\ApiController;
 class BautizoController extends ApiController
 {
     public function __construct(){
-        Sparent::__construct();
+        parent::__construct();
     }
 
     public function index()
