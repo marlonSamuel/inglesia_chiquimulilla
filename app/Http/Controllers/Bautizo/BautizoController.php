@@ -157,6 +157,7 @@ class BautizoController extends ApiController
             $b->direccion = $b->bautizado->direccion.' '.$b->bautizado->municipio->nombre. ' '.$b->bautizado->municipio->departamento->nombre;
         }
 
+        #pdf bautizos
         $pdf = \PDF::loadView('pdfs.bautizos',['bautizos'=>$bautizos,'from'=>$from,'to'=>$to])->setPaper('a4', 'landscape');
 
         return $pdf->download('bautizos.pdf');
