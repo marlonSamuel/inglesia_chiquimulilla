@@ -55,7 +55,7 @@
                       :error-messages="errors.collect('rol')"
                       label="Rol usuario"
                       item-value="id"
-                      item-text="rol"
+                      item-text="nombre"
                       data-vv-name="rol"
                       clearable
                     ></v-select>

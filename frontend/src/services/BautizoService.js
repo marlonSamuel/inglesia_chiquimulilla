@@ -36,6 +36,11 @@ class BautizoService{
         let self = this
         return self.axios.get(`${self.baseUrl}_pdf/${id}`, { responseType: 'blob' });
     }
+
+    printAll(from,to) {
+        let self = this
+        return self.axios.get(`${self.baseUrl}_print/${from}/${to}`, { responseType: 'blob' });
+    }
 }
 
 export default BautizoService

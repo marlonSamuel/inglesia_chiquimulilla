@@ -34,11 +34,11 @@ class Bautizo extends Model
     }
 
     public function padrino1(){
-    	return $this->belongsTo(Feligrese::class,'padre_id');
+    	return $this->belongsTo(Feligrese::class,'padrino1_id');
     }
 
     public function padrino2(){
-    	return $this->belongsTo(Feligrese::class,'padre_id');
+    	return $this->belongsTo(Feligrese::class,'padrino2_id');
     }
 
     public function libro(){

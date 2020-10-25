@@ -131,12 +131,17 @@
         class="elevation-1"
       >
         <template v-slot:items="props">
-          
-          <td class="text-xs-left">{{ props.item.primer_nombre }} {{ props.item.segundo_nombre }}
-                                   {{ props.item.primer_apellido }} {{ props.item.segundo_apellido }}</td>
+          <td class="text-xs-left">{{ props.index + 1}}</td>
+          <td class="text-xs-left">{{ props.item.nombre }}</td>
           <td class="text-xs-left">{{ props.item.parroquia.nombre }}</td>
           <td class="text-xs-left">{{ props.item.direccion }} {{ props.item.municipio.nombre }} {{ props.item.municipio.departamento.nombre }}</td>
           <td class="text-xs-left">
+              <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                      <v-icon v-on="on"  color="info" fab dark @click="$router.push('feligres_info/'+props.item.id)"> info</v-icon>
+                  </template>
+                  <span>información</span>
+              </v-tooltip>
               <v-tooltip top>
                 <template v-slot:activator="{ on }">
                     <v-icon v-on="on"  color="warning" fab dark @click="edit(props.item)"> edit</v-icon>
@@ -174,6 +179,7 @@ export default {
       municipios: [],
       parroquias: [],
       headers: [
+        { text: '#', value: '#' },
         { text: 'nombre', value: 'nombre' },
         { text: 'parroquia', value: 'parroquia' },
         { text: 'direccion', value: 'direccion' },
@@ -212,7 +218,12 @@ export default {
           if(self.$store.state.global.captureError(r)){
             return
           }
+          r.data.forEach(((x,i)=>{
+              x.nombre = x.primer_nombre + (x.segundo_nombre !== null ? ' '+x.segundo_nombre : '' )
+                        +' '+x.primer_apellido + (x.segundo_apellido !== null ? ' '+x.segundo_apellido: '')  
+          }))
           self.items = r.data
+          console.log(r.data)
         })
         .catch(r => {});
     },

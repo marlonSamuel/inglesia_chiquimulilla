@@ -160,7 +160,31 @@ export default {
             model: true,
             path: '',
             children: [
-                { name: 'Bautizo', icon: 'add', text: 'Bautizos', path: '/bautizo' }
+                { name: 'Bautizo', icon: 'add', text: 'Bautizos', path: '/bautizo' },
+                { name: 'Confirmacion', icon: 'add', text: 'Confirmaciones', path: '/confirmacion' },
+                { name: 'Matrimonio', icon: 'add', text: 'Matrimonios', path: '/matrimonio' }
+            ]
+        },
+
+        {
+            icon: 'supervised_user_circle',
+            text: 'Acceso',
+            name: 'Acceso',
+            model: true,
+            path: '',
+            children: [
+                { name: 'Usuario', icon: 'add', text: 'usuarios', path: '/usuario' }
+            ]
+        },
+
+        {
+            icon: 'file_copy',
+            text: 'Consultas',
+            name: 'reporte',
+            model: true,
+            path: '',
+            children: [
+                { name: 'Reporte', icon: 'add', text: 'Reporte', path: '/reporte' }
             ]
         },
 

@@ -14,7 +14,7 @@ use App\Http\Controllers\ApiController;
 class BautizoController extends ApiController
 {
     public function __construct(){
-        parent::__construct();
+        Sparent::__construct();
     }
 
     public function index()
@@ -131,12 +131,34 @@ class BautizoController extends ApiController
 
     public function pdf($id)
     {
-        $bautizo = Bautizo::where('id',$id)->with('padre','madre','padrino1','padrino2','libro','bautizado','parroco_parroquia')->first();
+        $bautizo = Bautizo::where('id',$id)->with('padre','madre','padrino1','padrino2','libro','bautizado','parroco_parroquia.parroco')->first();
 
         $pdf = \PDF::loadView('pdfs.bautizo',['bautizo'=>$bautizo]);
 
         $pdf->setPaper('legal', 'portrait');
 
         return $pdf->download('ejemplo.pdf');
+    }
+
+    public function print($from,$to){
+        if($from != 0 & $to != 0){
+            $bautizos = Bautizo::whereBetween('fecha', [$from, $to])->with('padre','madre','bautizado.municipio.departamento','padrino1','padrino2')->get();
+        }else{
+            $bautizos = Bautizo::with('padre','madre','bautizado.municipio.departamento','padrino1','padrino2')->get();
+        }
+
+        foreach ($bautizos as $b) {
+            $b->nombres = $b->bautizado->primer_nombre.' '.$b->bautizado->segundo_nombre.' '.$b->bautizado->primer_apellido.' '.$b->bautizado->segundo_apellido;
+
+            $b->padres = $b->padre->primer_nombre.' '.$b->padre->segundo_nombre.' '.$b->padre->primer_apellido.' '.$b->padre->segundo_apellido.' y '. $b->madre->primer_nombre.' '.$b->madre->segundo_nombre.' '.$b->madre->primer_apellido.' '.$b->madre->segundo_apellido;
+
+            $b->padrinos = $b->padrino1->primer_nombre.' '.$b->padrino1->segundo_nombre.' '.$b->padrino1->primer_apellido.' '.$b->padrino1->segundo_apellido.' y '. $b->padrino2->primer_nombre.' '.$b->padrino2->segundo_nombre.' '.$b->padrino2->primer_apellido.' '.$b->padrino2->segundo_apellido;
+
+            $b->direccion = $b->bautizado->direccion.' '.$b->bautizado->municipio->nombre. ' '.$b->bautizado->municipio->departamento->nombre;
+        }
+
+        $pdf = \PDF::loadView('pdfs.bautizos',['bautizos'=>$bautizos,'from'=>$from,'to'=>$to])->setPaper('a4', 'landscape');
+
+        return $pdf->download('bautizos.pdf');
     }
 }

@@ -27,6 +27,8 @@ class CreateMatrimoniosTable extends Migration
             $table->unsignedBigInteger('padre_novia_id');
             $table->unsignedBigInteger('madre_novia_id');
             $table->unsignedBigInteger('parroco_parroquia_id');
+            $table->unsignedBigInteger('parroquia_novio_id');
+            $table->unsignedBigInteger('parroquia_novia_id');
             $table->timestamps();
 
             $table->foreign('libro_id')->references('id')->on('libros');
@@ -37,6 +39,8 @@ class CreateMatrimoniosTable extends Migration
             $table->foreign('padre_novia_id')->references('id')->on('feligreses');
             $table->foreign('madre_novia_id')->references('id')->on('feligreses');
             $table->foreign('parroco_parroquia_id')->references('id')->on('parroco_parroquias');
+            $table->foreign('parroquia_novia_id')->references('id')->on('parroquias');
+            $table->foreign('parroquia_novio_id')->references('id')->on('parroquias');
         });
     }
 

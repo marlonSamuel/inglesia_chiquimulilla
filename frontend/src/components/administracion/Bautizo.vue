@@ -124,7 +124,8 @@
                    <v-flex xs12 sm2 md2>
                     <v-text-field v-model="form.partida" 
                         label="Partida"
-                        type="text">
+                        type="text"
+                        readonly>
                     </v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6 md6>
@@ -135,6 +136,10 @@
                             :items="feligreses"
                             item-text="nombre"
                             item-value="id"
+                            v-validate="'required'"
+                            data-vv-name="feligres"
+                            data-vv-as="bautizado"
+                            :error-messages="errors.collect('feligres')"
                             >
                         </v-autocomplete>
                     </v-flex>
@@ -146,6 +151,10 @@
                             :items="feligreses"
                             item-text="nombre"
                             item-value="id"
+                            v-validate="'required'"
+                            data-vv-name="padre"
+                            data-vv-as="padre"
+                            :error-messages="errors.collect('padre')"
                             >
                         </v-autocomplete>
                     </v-flex>
@@ -158,6 +167,9 @@
                             :items="feligreses"
                             item-text="nombre"
                             item-value="id"
+                            v-validate="'required'"
+                            data-vv-name="madre"
+                            :error-messages="errors.collect('madre')"
                             >
                         </v-autocomplete>
                     </v-flex>
@@ -170,6 +182,10 @@
                             :items="feligreses"
                             item-text="nombre"
                             item-value="id"
+                            v-validate="'required'"
+                            data-vv-name="madrino1"
+                            data-vv-as="primer padrino"
+                            :error-messages="errors.collect('padrino1')"
                             >
                         </v-autocomplete>
                     </v-flex>
@@ -182,6 +198,10 @@
                             :items="feligreses"
                             item-text="nombre"
                             item-value="id"
+                            v-validate="'required'"
+                            data-vv-name="madrino2"
+                            data-vv-as="segundo padrino"
+                            :error-messages="errors.collect('padrino2')"
                             >
                         </v-autocomplete>
                     </v-flex>
@@ -391,7 +411,7 @@ export default {
     //funcion para eliminar registro
     destroy(data){
       let self = this
-      self.$confirm('Seguro que desea eliminar feligres?').then(res => {
+      self.$confirm('Seguro que desea eliminar bautizo?').then(res => {
         self.loading = true
             self.$store.state.services.bautizoService
             .destroy(data)

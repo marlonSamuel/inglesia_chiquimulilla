@@ -14,6 +14,10 @@ import ParroquiaService from '../services/ParroquiaService'
 import LibroService from '../services/LibroService'
 import FeligresService from '../services/FeligresService'
 import BautizoService from '../services/BautizoService'
+import ConfirmacionService from '../services/ConfirmacionService'
+import MatrimonioService from '../services/MatrimonioService'
+import DashboardService from '../services/DashboardService'
+import RolService from '../services/RolService'
 
 
 //let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
@@ -76,5 +80,9 @@ export default {
     parroquiaService: new ParroquiaService(Axios,baseUrl),
     libroService: new LibroService(Axios,baseUrl),
     feligresService: new FeligresService(Axios,baseUrl),
-    bautizoService: new BautizoService(Axios,baseUrl)
+    bautizoService: new BautizoService(Axios,baseUrl),
+    confirmacionService: new ConfirmacionService(Axios,baseUrl),
+    matrimonioService: new MatrimonioService(Axios,baseUrl),
+    dashboardService: new DashboardService(Axios,baseUrl),
+    rolService: new RolService(Axios,baseUrl)
 }

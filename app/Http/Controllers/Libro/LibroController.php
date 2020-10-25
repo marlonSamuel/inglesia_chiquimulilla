@@ -10,7 +10,7 @@ use App\Http\Controllers\ApiController;
 class LibroController extends ApiController
 {
     public function __construct(){
-        #parent::__construct();
+        parent::__construct();
     }
 
     public function index()
@@ -45,7 +45,15 @@ class LibroController extends ApiController
 
     public function show(Libro $libro)
     { 
-        return $this->showOne($libro);
+        if($libro->tipo_libro == 'B'){
+            $libro = $libro->with('bautizos')->firstOrFail();
+        }else if($libro->tipo_libro == 'C'){
+            $libro = $libro->with('confirmaciones')->firstOrFail();
+        }else {
+            $libro = $libro->with('matrimonios')->firstOrFail();
+        }
+
+        return $this->showQuery($libro);
     }
 
     /**
@@ -86,5 +94,12 @@ class LibroController extends ApiController
     {
         $libro->delete();
         return $this->showOne($libro);
+    }
+
+     public function print($id){
+
+        $pdf = \PDF::loadView('pdfs.libro_bautizos',[])->setPaper('a4', 'landscape');
+
+        return $pdf->download('libro_bautizos.pdf');
     }
 }

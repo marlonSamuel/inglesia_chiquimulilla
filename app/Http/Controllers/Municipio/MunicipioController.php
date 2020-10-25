@@ -10,7 +10,7 @@ use App\Http\Controllers\ApiController;
 class MunicipioController extends ApiController
 {
     public function __construct(){
-        #parent::__construct();
+        parent::__construct();
     }
 
     public function index(){

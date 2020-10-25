@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Feligrese;
 
 use App\Feligrese;
+use Carbon\Carbon;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
@@ -46,6 +48,9 @@ class FeligreseController extends ApiController
 
     public function show(Feligrese $feligrese)
     { 
+        $feligrese = Feligrese::where('id',$feligrese->id)
+                                    ->with('bautizo.padre','bautizo.madre','bautizo.padrino1','bautizo.padrino2','bautizo.libro','confirmacion.padre','confirmacion.madre','confirmacion.padrino1','confirmacion.padrino2','confirmacion.libro','confirmacion.parroquia', 'matrimonio_novio.novia','matrimonio_novio.libro', 'matrimonio_novia.novio','matrimonio_novia.libro')->firstOrFail();
+
         return $this->showOne($feligrese);
     }
 
@@ -97,5 +102,24 @@ class FeligreseController extends ApiController
     {
         $feligrese->delete();
         return $this->showOne($feligrese);
+    }
+
+    //Funciones para crear el reporte e imprimir alumnnos
+    public function print()
+    {
+        $feligreses = Feligrese::with('municipio.departamento','parroquia')->get();
+
+        foreach ($feligreses as $i) {
+            $nombres = $i->primer_nombre.' '.$i->segundo_nombre.' '.$i->primer_apellido.' '.$i->segundo_apellido;
+
+            $i->nombres = $nombres;
+            $i->direccion = $i->direccion.' '.$i->municipio->nombre. ' '.$i->municipio->departamento->nombre;
+            $i->age = Carbon::parse($i->fecha_nac)->age;
+            $i->parroquia = $i->parroquia->nombre;
+        }
+
+        $pdf = \PDF::loadView('pdfs.feligres',['feligreses'=>$feligreses])->setPaper('a4', 'landscape');
+
+        return $pdf->download('feligreses.pdf');
     }
 }

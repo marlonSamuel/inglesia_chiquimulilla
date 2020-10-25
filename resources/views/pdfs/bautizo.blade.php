@@ -40,6 +40,12 @@
         Y 
         {{$bautizo->padrino2->primer_nombre}} {{$bautizo->padrino2->segundo_nombre}} {{$bautizo->padrino2->primer_apellido}} {{$bautizo->padrino2->segundo_apellido}}</b> <br />
 
+        Firma el acta el padre: <b> {{$bautizo->parroco_parroquia->parroco->primer_nombre}} 
+                                {{$bautizo->parroco_parroquia->parroco->segundo_nombre}}
+                                {{$bautizo->parroco_parroquia->parroco->primer_apellido}}
+                                {{$bautizo->parroco_parroquia->parroco->segundo_apellido}}
+                                </b><br />
+
         Al margen se lee  <b> {{$bautizo->bautizado->primer_nombre}} {{$bautizo->bautizado->segundo_nombre}} {{$bautizo->bautizado->primer_apellido}} {{$bautizo->bautizado->segundo_apellido}}</b><br />
 
             En consecuencia y para los usos que al interesado convengan, extiende, firma y sella la presente en el despacho de la Parroquia Santa Cruz Chiquimulilla, Depto. De Santa Rosa.
@@ -114,6 +120,7 @@
             position: fixed;
             text-align: left;
             margin: 30px, 20px, 0px, 0px;
+            border-radius: 50%;
         }
 
         .title-body {
