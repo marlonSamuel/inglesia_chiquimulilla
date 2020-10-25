@@ -1,6 +1,8 @@
 <template>
   <v-layout align-start v-loading="loading">
-      <v-container grid-list-md justify-center>
+    <v-flex>
+      
+      <v-container grid-list-md>
           <v-flex>
               
           <v-layout row wrap>
@@ -52,6 +54,7 @@
           </v-layout>
           </v-flex>
       </v-container>
+    </v-flex>
   </v-layout>
 </template>
 

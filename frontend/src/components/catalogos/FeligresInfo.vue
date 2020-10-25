@@ -1,8 +1,9 @@
 <template>
   <v-layout align-start v-loading="loading">
-    
+    <v-flex>
+      
     <v-container grid-list-md>
-        <v-flex>
+      <v-flex>
         <v-layout row wrap justify-end>
         <div>
           <v-breadcrumbs :items="itemsB">
@@ -190,6 +191,7 @@
             </v-flex>
         </v-layout>
     </v-container>
+    </v-flex>
   </v-layout>
 </template>
 
