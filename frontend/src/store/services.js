@@ -20,8 +20,8 @@ import DashboardService from '../services/DashboardService'
 import RolService from '../services/RolService'
 
 
-let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
-//let baseUrl = 'http://207.154.253.69/iglesia/' //url production
+//let baseUrl = 'http://www.iglesia.com/' //base url desarrollo
+let baseUrl = 'http://207.154.253.69/iglesia/' //url production
 let token_data = $cookies.get('token_data')
 
 // Axios Configuration
