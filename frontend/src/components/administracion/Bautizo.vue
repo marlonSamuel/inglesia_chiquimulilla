@@ -87,7 +87,7 @@
 
         <v-dialog v-model="dialog" max-width="1000px">
           <template v-slot:activator="{ on }">
-            <v-btn color="primary" small dark class="mb-2" v-on="on"><v-icon>add</v-icon> Nuevo</v-btn>
+            <v-btn color="primary" small dark class="mb-2" v-on="on" @click="newBautizo" ><v-icon>add</v-icon> Nuevo</v-btn>
           </template>
           <v-card>
             <v-card-title>
@@ -101,6 +101,7 @@
                     <v-text-field type="date"
                         label="Fecha"
                         v-model="form.fecha"
+                        v-validate="'required'"
                         data-vv-name="fecha"
                         :error-messages="errors.collect('fecha')">
                       </v-text-field>
@@ -308,7 +309,6 @@ export default {
     let self = this
     self.getAll()
     self.getFeligreses()
-    self.getLibros()
   },
 
   methods: {
@@ -364,10 +364,16 @@ export default {
                 if(self.libro !== null && self.libro !== undefined){
                   self.form.libro = self.libro.no_libro
                   self.form.libro_id = self.libro.id
-                  self.form.folio = self.libro.partida_actual == 0 ? self.libro.folio_actual+1 : self.libro.folio_actual
+                  self.form.folio = self.libro.partida_actual == 0 & self.libro.folio_actual == 0 ? self.libro.folio_actual+1 : self.libro.folio_actual
                   self.form.partida = self.libro.partida_actual+1
                 }
             }).catch(e=>{})
+    },
+
+    newBautizo(){
+      let self = this
+      self.dialog = true
+      self.getLibros()
     },
 
     //funcion para guardar registro
@@ -385,6 +391,7 @@ export default {
           this.$toastr.success('registro agregado con éxito', 'éxito')
           self.getAll()
           self.clearData()
+          self.dialog = false
         })
         .catch(r => {});
     },
@@ -404,6 +411,7 @@ export default {
           self.getAll()
           this.$toastr.success('registro actualizado con éxito', 'éxito')
           self.clearData()
+          self.dialog = false
         })
         .catch(r => {});
     },

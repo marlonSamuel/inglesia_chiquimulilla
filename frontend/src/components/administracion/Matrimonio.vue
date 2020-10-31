@@ -84,7 +84,7 @@
 
         <v-dialog v-model="dialog" max-width="1000px" persistent>
           <template v-slot:activator="{ on }">
-            <v-btn color="primary" small dark class="mb-2" v-on="on"><v-icon>add</v-icon> Nuevo</v-btn>
+            <v-btn color="primary" small dark class="mb-2" v-on="on" @click="newMat" ><v-icon>add</v-icon> Nuevo</v-btn>
           </template>
           <v-card>
             <v-card-title>
@@ -388,7 +388,6 @@ export default {
     let self = this
     self.getAll()
     self.getFeligreses()
-    self.getLibros()
     self.getParroquias()
   },
 
@@ -469,10 +468,16 @@ export default {
                 if(self.libro !== null && self.libro !== undefined){
                   self.form.libro = self.libro.no_libro
                   self.form.libro_id = self.libro.id
-                  self.form.folio = self.libro.partida_actual == 0 ? self.libro.folio_actual+1 : self.libro.folio_actual
+                  self.form.folio = self.libro.partida_actual == 0 & self.libro.folio_actual == 0 ? self.libro.folio_actual+1 : self.libro.folio_actual
                   self.form.partida = self.libro.partida_actual+1
                 }
             }).catch(e=>{})
+    },
+
+    newMat(){
+      let self = this
+      self.dialog = true
+      self.getLibros()
     },
 
     //funcion para guardar registro
@@ -491,6 +496,7 @@ export default {
           this.$toastr.success('registro agregado con éxito', 'éxito')
           self.getAll()
           self.clearData()
+          self.dialog = false
         })
         .catch(r => {});
     },
@@ -510,6 +516,7 @@ export default {
           self.getAll()
           this.$toastr.success('registro actualizado con éxito', 'éxito')
           self.clearData()
+          self.dialog = false
         })
         .catch(r => {});
     },

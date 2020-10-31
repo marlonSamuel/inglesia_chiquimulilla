@@ -53,7 +53,7 @@ class BautizoController extends ApiController
             $libro->partida_actual = $request->partida;
 
             if($libro->partida_actual+1 > 3){
-                $libro->partida_actual = 1;
+                $libro->partida_actual = 0;
                 $libro->folio_actual+=1;
             }
             
@@ -115,7 +115,9 @@ class BautizoController extends ApiController
                 $libro->folio_actual = 0;
                 $libro->partida_actual = 0;
             }else if($libro->partida_actual == 1){
-                $libro->partida_actual = 3;
+                $libro->partida_actual = 0;
+            }else if($libro->partida_actual == 0){
+                $libro->partida_actual = 2;
                 $libro->folio_actual-=1;
             }else{
                 $libro->partida_actual-=1;

@@ -249,6 +249,7 @@ export default {
         self.form.id = data.id
         self.form.no_folios = data.no_folios
         self.form.partidas = data.partidas
+        self.form.tipo_libro = data.tipo_libro
     },
 
     //funcion, validar si se guarda o actualiza
